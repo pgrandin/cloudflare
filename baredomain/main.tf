@@ -8,6 +8,7 @@ resource "cloudflare_record" "root" {
 }
 
 resource "cloudflare_record" "www" {
+  count  = "${var.www_ip != "" ? 1 : 0}"
   domain = "${var.domain}"
   name   = "www"
   value  = "${var.www_ip}"
